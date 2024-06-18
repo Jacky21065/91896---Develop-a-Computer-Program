@@ -1,3 +1,7 @@
+#Date: 18/06/2024
+#Author: Jacky
+#Purpose: Checkpoint 1 AS91896 - Concept 1 Program
+
 from tkinter import *
 
 # Quit subroutine
