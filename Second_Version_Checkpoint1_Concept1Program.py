@@ -1,6 +1,6 @@
 #Date: 18/06/2024
 #Author: Jacky
-#Purpose: Checkpoint 1 AS91896 - Concept 1 Program
+#Purpose: Checkpoint 1 AS91896 - Concept 1 Program 2
 
 
 from tkinter import *
@@ -13,11 +13,11 @@ def quit():
 def print_hired_item_details():
     name_count = 0
     # Create the column headings
-    Label(main_window, font=("Helvetica", 10, "bold"), text="RECEIPT NUMBER").grid(column=0, row=7)
-    Label(main_window, font=("Helvetica", 10, "bold"), text="Name").grid(column=1, row=7)
-    Label(main_window, font=("Helvetica", 10, "bold"), text="Item Name").grid(column=2, row=7)
-    Label(main_window, font=("Helvetica", 10, "bold"), text="Items Hired").grid(column=3, row=7)
-    Label(main_window, font=("Helvetica", 10, "bold"), text="Delete Row").grid(column=4, row=7)
+    Label(main_window, font=("Segoe UI", 10, "bold"), text="RECEIPT NUMBER:").grid(column=0, row=7)
+    Label(main_window, font=("Segoe UI", 10, "bold"), text="Name:").grid(column=1, row=7)
+    Label(main_window, font=("Segoe UI", 10, "bold"), text="Items Hired:").grid(column=2, row=7)
+    Label(main_window, font=("Segoe UI", 10, "bold"), text="Item Name:").grid(column=3, row=7)
+    Label(main_window, font=("Segoe UI", 10, "bold"), text="Delete Row:").grid(column=4, row=7)
     # Add each item in the list into its own row
     while name_count < counters['total_entries']:
         Label(main_window, text=name_count).grid(column=0, row=name_count+8)
@@ -46,7 +46,7 @@ def check_inputs():
     # Check the number of items hired is not blank and between 1 and 500, set error text if blank
     if entry_quantity.get().isdigit():
         if int(entry_quantity.get()) < 1 or int(entry_quantity.get()) > 500:
-            Label(main_window, fg="red", text="1-500 only").grid(column=2, row=2)
+            Label(main_window, fg="red", text="1-500 only").grid(column=2, row=3)
             input_check = 1
     else:
         Label(main_window, fg="red", text="1-500 only").grid(column=2, row=2)
@@ -67,17 +67,17 @@ def append_item():
 
 # Delete a row from the list
 def delete_row():
-    # Find which row is to be deleted and delete it
-    del hired_items[int(delete_item.get())]
+    # Find which row is to be deleted and delete it   
+    del hired_items[int(float(delete_item.get()))]    #?
     counters['total_entries'] -= 1
     name_count = counters['name_count']
-    delete_item.delete(0, 'end')
+    delete_item.delete(1, 'end')
     # Clear the last item displayed on the GUI
-    Label(main_window, text="       ").grid(column=0, row=name_count+7)
-    Label(main_window, text="       ").grid(column=1, row=name_count+7)
-    Label(main_window, text="       ").grid(column=2, row=name_count+7)
-    Label(main_window, text="       ").grid(column=3, row=name_count+7)
-    Label(main_window, text="       ").grid(column=4, row=name_count+7)
+    Label(main_window, text="                                                   ").grid(column=0, row=name_count+7)
+    Label(main_window, text="                                                   ").grid(column=1, row=name_count+7)
+    Label(main_window, text="                                                   ").grid(column=2, row=name_count+7)
+    Label(main_window, text="                                                   ").grid(column=3, row=name_count+7)
+    Label(main_window, text="                                                   ").grid(column=4, row=name_count+7)
     # Print all the items in the list
     print_hired_item_details()
 
@@ -99,6 +99,7 @@ def setup_buttons():
 def main():
     # Start the GUI up
     setup_buttons()
+    main_window.title("Party Hire Store")
     main_window.mainloop()
 
 # Create empty list for hired item details and empty variable for entries in the list
